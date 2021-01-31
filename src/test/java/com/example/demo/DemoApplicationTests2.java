@@ -2,6 +2,7 @@ package com.example.demo;
 
 
 import com.example.config.ElasticSearchConfig;
+import com.example.config.ElasticsearchUtil;
 import org.elasticsearch.action.admin.indices.exists.indices.IndicesExistsRequest;
 import org.elasticsearch.action.admin.indices.exists.indices.IndicesExistsResponse;
 import org.elasticsearch.action.search.SearchResponse;
@@ -44,10 +45,8 @@ public class DemoApplicationTests2 {
 
 	@Test
 	public void  queryEs(){
-		IndicesExistsResponse indicesExistsResponse = client.admin().indices().exists(new IndicesExistsRequest(INDEX_NAME)).actionGet();
-
-//		SearchResponse searchResponse = client.prepareSearch().setIndices(INDEX_NAME).get();
-		LOGGER.info("es:{}",indicesExistsResponse);
+		boolean indexExist = ElasticsearchUtil.isIndexExist(INDEX_NAME);
+		LOGGER.info("es:{}",indexExist);
 
 	}
 }
