@@ -1,0 +1,122 @@
+GET /ecommerce/product/_search
+{
+  "query":{
+    "match_all": {}
+  }
+}
+GET ecommerce/product/1
+
+GET /ecommerce/product/_search
+{
+  "query":{
+    "match": {
+      "name":"yagao"
+    }
+  },
+  "sort":[{"price":"desc"}]
+}
+
+GET /ecommerce/product/_search
+{
+  "query":{"match_all":{}},
+   "from": 1,
+  "size": 10
+}
+
+GET /ecommerce/product/_search
+{
+  "query":{"match_all":{}},
+  "_source": ["name", "price"],
+   "highlight": {
+        "fields" : {
+            "name" : {}
+        }
+    }
+}
+
+GET /ecommerce/product/_search
+{
+  "query":{
+    "bool":{
+      "must":{
+        "match_phrase":{"name":"yagao"}
+      },
+      "filter": {
+        "range":{
+          "price":{"gt":25}
+        }
+      }
+    }
+  },
+  "highlight": {
+        "fields" : {
+            "producer" : {}
+        }
+    }
+}
+
+DELETE  /ceshi1
+PUT /ceshi
+PUT /ceshi1
+GET /ceshi/_mapping
+GET /ceshi1/_mapping
+GET /ceshi/job/_search
+GET /ceshi1/job/_search
+DELETE /ceshi1/job/1
+PUT /ceshi
+{
+  "mappings": {
+    "job":{
+      "properties": {
+        "title":{
+          "type": "text"
+        },
+        "city":{
+          "type":"keyword"
+        },
+        "comments":{
+          "type":"integer"
+        }
+      }
+    }
+  }
+}
+PUT  /ceshi1
+{
+  "mappings": {
+    "job":{
+      "properties": {
+        "title":{
+          "type": "keyword"
+        },
+        "city":{
+          "type":"text"
+        },
+        "comments":{
+          "type":"long"
+        }
+      }
+    }
+  }
+}
+
+PUT /ceshi/job/1
+{
+  "title":"python分布式web开发",
+  "city":"北京",
+  "comments":51
+}
+
+
+POST _reindex?slices=5&refresh
+{
+  "source": {
+    "index": "ceshi"
+  },
+  "dest": {
+    "index": "ceshi1",
+    "version_type": "internal"
+  }
+}
+
+
