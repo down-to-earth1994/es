@@ -29,8 +29,31 @@ elasticsearch  部署的时候注意点
  reindex 超时解决方案
   https://blog.csdn.net/u014646662/article/details/97638792?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.control&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.control  
  esdump 使用命令
-https://www.cnblogs.com/yfb918/p/10735041.html
+https://www.cnblogs.com/yfb918/p/10735041.html  
 
+####esm
+    https://github.com/medcl/esm
+####elasticdump 安装
+##### 安装node
+    wget http://nodejs.org/dist/v0.10.32/node-v0.10.32-linux-x64.tar.gz
+    tar zxvf node-v0.10.32-linux-x64.tar.gz
+    mv  node-v0.10.32-linux-x64 /usr/local/node   #重命名
+    cd /usr/bin    #切换到环境变量目录下
+    ln -s /usr/local/node/bin/node node   #添加执行软链
+    ln -s /usr/local/node/bin/npm npm
+    node -v                #查看版本，验证是否安装成功
+    npm-v
+    sudo npm i -g n  #安装 node 版本控制
+    sudo n stable    #安装稳定版本
+    sudo n v8.11.2   #安装指定版本
+    sudo n latest    #安装最新版本
+    npm i -g npm@6.14.2   # 升级npm 到指定的版本
+    npm config set registry http://registry.npm.taobao.org/  切换到淘宝镜像
+    
+    npm install elasticdump -g  #安装elasticdump node 包
+    elasticdump --version  # 查看安装的版本
+    
+##### 安装
 ####备份分词器：
   elasticdump  --input=http://127.0.0.1:9200/ceshi --output=/Users/heyanfeng/Desktop/es_install/es_data/mapping/ceshi.json --type=analyzer  
 ####备份 索引：
