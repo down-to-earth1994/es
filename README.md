@@ -27,4 +27,17 @@ elasticsearch  部署的时候注意点
        }
      }  
  reindex 超时解决方案
-  https://blog.csdn.net/u014646662/article/details/97638792?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.control&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.control
+  https://blog.csdn.net/u014646662/article/details/97638792?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.control&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.control  
+ esdump 使用命令
+https://www.cnblogs.com/yfb918/p/10735041.html
+
+####备份分词器：
+  elasticdump  --input=http://127.0.0.1:9200/ceshi --output=/Users/heyanfeng/Desktop/es_install/es_data/mapping/ceshi.json --type=analyzer  
+####备份 索引：
+ elasticdump  --ignore-errors=true  --scrollTime=120m  --bulk=true --input=http://127.0.0.1:9200/ceshi --output=/Users/heyanfeng/Desktop/es_install/es_data/mapping/ceshi.json --type=mapping  
+ elasticdump  --ignore-errors=true  --scrollTime=120m  --bulk=true --input=http://10.0.3.123:9200/wxjk_dev_recordinfo202101 --output=/home/es_dump/backup/wxjk/mapping.json --type=mapping 
+####备份 data：
+   elasticdump --ignore-errors=true  --scrollTime=120m  --bulk=true  --input=http://127.0.0.1:9200/ceshi --output=/Users/heyanfeng/Desktop/es_install/es_data/data/ceshi_data.json --type=data  
+   elasticdump  --ignore-errors=true  --scrollTime=120m  --bulk=true --input=http://10.0.3.123:9200/wxjk_dev_recordinfo202101 --output=/home/es_dump/backup/wxjk/data.json --type=data
+####导入: 
+  elasticdump  --input=/Users/heyanfeng/Desktop/es_install/es_data/data/ceshi_data.json --output=http://127.0.0.1:9200/ceshi1
