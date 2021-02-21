@@ -63,4 +63,33 @@ https://www.cnblogs.com/yfb918/p/10735041.html
    elasticdump --ignore-errors=true  --scrollTime=120m  --bulk=true  --input=http://127.0.0.1:9200/ceshi --output=/Users/heyanfeng/Desktop/es_install/es_data/data/ceshi_data.json --type=data  
    elasticdump  --ignore-errors=true  --scrollTime=120m  --bulk=true --input=http://10.0.3.123:9200/wxjk_dev_recordinfo202101 --output=/home/es_dump/backup/wxjk/data.json --type=data
 ####导入: 
-  elasticdump  --input=/Users/heyanfeng/Desktop/es_install/es_data/data/ceshi_data.json --output=http://127.0.0.1:9200/ceshi1
+  elasticdump  --input=/Users/heyanfeng/Desktop/es_install/es_data/data/ceshi_data.json --output=http://127.0.0.1:9200/ceshi1  
+  
+  谷歌翻译英文源Elasticsearch实例，即：http：//本地主机：9200 
+  -q，-query =针对源Elasticsearch实例的查询，在迁移之前过滤数据，即：名称：medcl 
+  -d，-dest =目标Elasticsearch实例，即：http：//本地主机：9201
+   -m，-source_auth =源Elasticsearch实例的基本身份验证，即：用户：pass 
+   -n，-dest_auth =目标Elasticsearch实例的基本身份验证，即：user：pass 
+   - c ，-count =一次一次的文档数：即滚动请求中的“大小”（10000）
+   -buffer_count =内存中缓冲的文档数（100000）
+   -w，-workers =批量工作程序的并发数（1 ）- b，
+    --bulk_size =批量大小（MB）（5）
+   -t，-time =滚动时间（1m）-sliced_scroll_size =切片滚动的大小，要正常工作，该大小应>1（1）
+   -f，--强制复制前删除目标索引g 
+   -a，-所有以。开头的副本索引和_ 
+        --copy_settings从源复制索引设置--copy_mappings从源-碎片=复制索引映射在新创建的索引上设置多个分片-x，
+        -src_indexes =要复制的索引名称，支持正则表达式和逗号分隔列表（_all）-y，
+        -dest_index =保存索引名称，仅允许一个索引名称，如果未指定则将使用原始索引名称-u，
+        -type_override =覆盖类型名称--green等待两个主机的状态状态变为绿色倾倒。否则黄色是可以的-v，
+        -log =设置日志等级，选项：trace，debug，info，warn，error（INFO）-o，
+        -output_file =将源索引的文档输出到本地文件中-i，
+        -input_file =从本地转储文件建立索引
+        --input_file_type =输入文件的数据类型，选项：转储，json_line，json_array，log_line（转储）
+        -source_proxy =将代理设置为源http连接，即：http：//127.0 .0.1：8080 
+        --dest_proxy =将代理设置为目标http连接，即：http：//127.0.0.1：8080-迁移完成后刷新刷新--fields =过滤源串联，以逗号分隔，即：col1，col2 ，col3。 .. 
+        --rename =重命名源标题，用逗号分隔，即：_type：类型，名称：myname -l
+        ，-logstash_endpoint =目标logstash tcp端点，即：127.0.0.1：5055
+         --TLS的--secured_logstash_endpoint目标日志存储tcp端点是安全的
+         --repeat_times =将源中的数据重复N次到达目标输出，使用与参数regenerate_id对齐来放大数据大小-r，
+         -regenerate_id为文档重新生成ID ，，这将覆盖数据源中存在的文档ID--compressinggzip压缩流量-p，
+  -sleep =睡眠在完成批量请求后N秒（-1）帮助选项：-h，-help显示此帮助消息
